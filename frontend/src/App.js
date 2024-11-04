@@ -2,17 +2,17 @@ import './App.css';
 import {Route, Routes} from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './pages/Home.js';
-//import Search from __
+import Search from './pages/Search.js';
 // import Results from __
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
-      <Home></Home>
 
       <Routes>
-        <Route path = "/search" element = {<Home/>}/>
+        <Route path = "/home" element = {<Home/>}/>
+        <Route path = "/search" element = {<Search/>}/>
       </Routes>
       
     </div>

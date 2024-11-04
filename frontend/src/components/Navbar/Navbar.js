@@ -8,7 +8,9 @@ const Navbar = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant = "h6" sx={{ flexGrow: 1 }} color = "textPrimary">
-          BookWorm
+          <Link to = '/home'>
+            <Button> BookWorm </Button>
+          </Link>
         </Typography>
         <Link to = '/search'>
             <Button>Search</Button>
