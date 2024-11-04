@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Box, TextField, IconButton} from '@mui/material';
+import {Box, TextField, IconButton, Grid2, CardContent, CardMedia, Card, Typography} from '@mui/material';
 import {useTheme} from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -51,8 +51,11 @@ const Search = () => {
                 borderRadius: 5,
                 width: 350,
                 }}
-                onChange = {handleInputChange} //change the value of "query" corresponding to user input
-                value = {query} //set the value of the text-field to "query"
+                onChange = {handleInputChange} //updates state of "query"
+                //value = {query} is not necessary for user-inputted text to display in the textField, but it allows React to control textField
+                //such that it reliably syncs with the state of "query". Thus, if something else changes the state of "query", such as clearing it,
+                //this might not necessarily be reflected in textField unless controlled by React
+                value = {query} //ensures that the textField reflects the latest query state upon each render
             >
             </TextField>
 
