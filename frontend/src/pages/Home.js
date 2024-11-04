@@ -1,6 +1,7 @@
 import React from "react";
-import {Box, TextField, Typography, Button} from '@mui/material';
+import {Box, TextField, IconButton} from '@mui/material';
 import {useTheme} from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Home = () => {
 
@@ -18,14 +19,31 @@ const Home = () => {
             color: theme.palette.text.primary,
         }}
     >
-        <TextField
-            placeholder="Type to search for a book by title or author"
-            sx={{
-              backgroundColor: theme.palette.primary.main, 
-              borderRadius: 5,
+        <Box
+            sx = {{
+                display: 'flex',
+                direction: 'row',
+                alignItems: 'center',
             }}
         >
-        </TextField>
+            <IconButton
+                sx={{ marginLeft: 1 }}
+                aria-label="search"
+            >
+            <SearchIcon />
+            </IconButton>
+            
+            <TextField
+                placeholder="Type to search for a book by title or author"
+                sx={{
+                backgroundColor: theme.palette.primary.main, 
+                borderRadius: 5,
+                width: 350,
+                }}
+            >
+            </TextField>
+
+        </Box>
 
     </Box>
     

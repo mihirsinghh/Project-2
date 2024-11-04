@@ -10,6 +10,10 @@ function App() {
     <div className="App">
       <Navbar></Navbar>
       <Home></Home>
+
+      <Routes>
+        <Route path = "/search" element = {<Home/>}/>
+      </Routes>
       
     </div>
   );

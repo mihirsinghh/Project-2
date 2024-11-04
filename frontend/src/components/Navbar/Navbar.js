@@ -10,8 +10,12 @@ const Navbar = () => {
         <Typography variant = "h6" sx={{ flexGrow: 1 }} color = "textPrimary">
           BookWorm
         </Typography>
-        <Button>Search</Button>
-        <Button>My Favorites</Button>
+        <Link to = '/search'>
+            <Button>Search</Button>
+        </Link>
+        <Link to = '/my-favorites'>
+            <Button>My Favorites</Button>
+        </Link>
       </Toolbar>
     </AppBar>
 )};
