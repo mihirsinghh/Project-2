@@ -8,7 +8,7 @@ function Results() {
 //useLocation hook allows you to access the "location" object, which includes data passed through state
 //we use it to access "results" array
   const location = useLocation();
-  const results = location.state?.results; // Access passed results from state
+  const results = location.state?.results; // Access results array from state
 
   return (
     //sets up a Grid container with a spacing of "2" between each item, which will be each book-card

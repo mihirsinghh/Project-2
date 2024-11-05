@@ -41,6 +41,9 @@ const Search = () => {
             }));
             
             setResults(books); //update "results" state to the "books" array
+
+            // Navigate to the Results page and pass the results as state
+            navigate('/results', { state: { results: books } });
         }
 
         catch (error) {
