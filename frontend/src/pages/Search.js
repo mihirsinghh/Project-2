@@ -20,7 +20,7 @@ const Search = () => {
 
         try {
             //fetch data from the API using a dynamic query
-            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=40`);
             //parses the fetched data into JSON format
             const data = await response.json();
 
