@@ -15,8 +15,8 @@ function BookInfo() {
                 backgroundColor: theme.palette.secondary.main,
             }}
         >   
-            <Box //Box container for image and book description
-                sx = {{display: 'flex', flexDirection: 'row', gap: 4}}
+            <Box //Box container that holds image and book info
+                sx = {{display: 'flex', flexDirection: 'row', gap: 10}}
             >
                 <Card 
                     sx = {{width: 200}}
@@ -31,9 +31,10 @@ function BookInfo() {
                         }}
                     />
                 </Card>
-                        
+                
+                {/* Box container that holds book info */}        
                 <Box
-                    sx = {{display: 'flex', flexDirection: 'column', gap: 1, maxWidth: 700}}
+                    sx = {{display: 'flex', flexDirection: 'column', gap: 1, maxWidth: '60%'}}
                 >
                     <Typography variant = "h6">{book.title}</Typography>
                     <Typography variant = "h7">{book.authors}</Typography>
