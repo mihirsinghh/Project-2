@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {Box, TextField, IconButton, Grid2, CardContent, CardMedia, Card, Typography} from '@mui/material';
+import React, {useState} from "react";
+import {Box, TextField, IconButton} from '@mui/material';
 import {useTheme} from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from 'react-router-dom';
