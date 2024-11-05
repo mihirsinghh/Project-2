@@ -14,7 +14,7 @@ function Results() {
     <Grid2 
         container
         sx={{
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.main,
             minHeight: '100vh',
         }}
         justifyContent = "center" //aligns all Grid items in the center of the container along the row-axis

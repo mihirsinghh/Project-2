@@ -12,7 +12,7 @@ function BookInfo() {
         <Box //page box
             sx = {{
                 minHeight: '100vh',
-                backgroundColor: theme.palette.secondary.main,
+                backgroundColor: theme.palette.primary.main,
                 display: 'flex',
                 alignItems: 'center'
             }}

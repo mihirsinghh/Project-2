@@ -55,7 +55,7 @@ const Search = () => {
     <Box
         sx={{
             minHeight: '100vh',
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.main,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -82,7 +82,7 @@ const Search = () => {
             <TextField
                 placeholder="Type to search for a book by title or author"
                 sx={{
-                backgroundColor: theme.palette.primary.main, 
+                backgroundColor: theme.palette.secondary.main, 
                 borderRadius: 5,
                 width: 350,
                 }}
