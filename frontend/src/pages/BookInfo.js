@@ -20,20 +20,28 @@ function BookInfo() {
             <Box //Box container that holds image and book info
                 sx = {{display: 'flex', flexDirection: 'row', gap: 10}}
             >   
-                {/* Image card */}
-                <Card 
-                    sx = {{width: 300, marginLeft: 10}}
+
+                {/*Box container that holds image and add button*/}
+                <Box
+                    sx = {{display: 'flex', flexDirection: 'column', gap: 2}}
                 >
-                    <CardMedia
-                        component="img"
-                        image={book.thumbnail}
-                        sx = {{
-                            height: 400,
-                            width: '100%',
-                            objectFit: 'cover'
-                        }}
-                    />
-                </Card>
+                    {/* Image card */}
+                    <Card 
+                        sx = {{width: 300, marginLeft: 10}}
+                    >
+                        <CardMedia
+                            component="img"
+                            image={book.thumbnail}
+                            sx = {{
+                                height: 400,
+                                width: '100%',
+                                objectFit: 'cover'
+                            }}
+                        />
+                    </Card>
+                    <Button variant = "contained" sx = {{marginLeft: 10, backgroundColor: theme.palette.secondary.main}}>Add to Favorites</Button>
+                </Box>
+    
 
                 {/* Box container that holds book info */}        
                 <Box

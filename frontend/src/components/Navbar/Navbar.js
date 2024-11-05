@@ -13,10 +13,10 @@ const Navbar = () => {
           BookWorm
         </Typography>
         <Link to = '/search'>
-            <Button>Search</Button>
+            <Button variant = 'contained'>Search</Button>
         </Link>
         <Link to = '/my-favorites'>
-            <Button>My Favorites</Button>
+            <Button variant = 'contained'>My Favorites</Button>
         </Link>
       </Toolbar>
     </AppBar>
