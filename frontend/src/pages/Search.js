@@ -2,18 +2,50 @@ import React, {useState, useEffect} from "react";
 import {Box, TextField, IconButton, Grid2, CardContent, CardMedia, Card, Typography} from '@mui/material';
 import {useTheme} from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import {useNavigate} from 'react-router-dom';
 
 const Search = () => {
     const theme = useTheme();
     const[query, setQuery] = useState("");
     const[results, setResults] = useState([]);
 
+    const navigate = useNavigate();
+
     const handleInputChange = (input) => {
         setQuery(input.target.value); //sets the value of "query" to the input typed into text field
     };
 
     const handleSearch = async() => {
-        //fetch books based on query
+        if (!query) return;
+
+        try {
+            //fetch data from the API using a dynamic query
+            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+            //parses the fetched data into JSON format
+            const data = await response.json();
+
+            //the JSON object returned has a property called "items" which is an array of Book objects
+            //each Book object has multiple attributes
+            //the map() function iterates over each Book object in the data.items array and applies the argument function to each Book
+            //in this case, the function takes each Book item and returns a new item with a subset of the Book's original attributes
+            //the result of this mapping is an array "books" which contains all of the transformed Book objects
+            const books = data.items.map((item) => ({
+                id: item.id,
+                title: item.volumeInfo.title,
+                subtitle: item.volumeInfo.subtitle,
+                authors: item.volumeInfo.authors,
+                publisher: item.volumeInfo.publisher,
+                publishedDate: item.volumeInfo.publishedDate,
+                description: item.volumeInfo.description,
+                thumbnail: item.volumeInfo.imageLinks.thumbnail,
+            }));
+            
+            setResults(books); //update "results" state to the "books" array
+        }
+
+        catch (error) {
+            console.error("Error obtaining books from Google Books API");
+        }
     };
 
     return (
