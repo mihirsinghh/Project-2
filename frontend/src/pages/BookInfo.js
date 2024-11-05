@@ -14,8 +14,7 @@ function BookInfo() {
                 minHeight: '100vh',
                 backgroundColor: theme.palette.secondary.main,
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignItems: 'center'
             }}
         >   
             <Box //Box container that holds image and book info
@@ -23,7 +22,7 @@ function BookInfo() {
             >   
                 {/* Image card */}
                 <Card 
-                    sx = {{width: 300}}
+                    sx = {{width: 300, marginLeft: 10}}
                 >
                     <CardMedia
                         component="img"
