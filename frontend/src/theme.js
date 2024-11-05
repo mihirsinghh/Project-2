@@ -8,10 +8,10 @@ const theme = createTheme({
         secondary: '#777777',
     },
     primary: {
-        main: '#512DA8',
+        main: '#6200ea', // Your primary color
     },
     secondary: {
-        main: '#6200ea', // Your primary color
+        main: '#512DA8',
     },
     background: {
       default: '#f5f5f5', // Background color for the app
