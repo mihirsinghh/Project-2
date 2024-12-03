@@ -1,20 +1,19 @@
-// src/theme.js
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     text: {
-        primary: '#EF4C1A',
-        secondary: '#777777',
+        primary: '#000000', // Black for primary text (paragraphs and the rest of the text)
+        secondary: '#777777', // Optional: If needed for secondary text
     },
     primary: {
-        main: '#4E0573', // Your primary color
+        main: '#FDF5E2', // Title color
     },
     secondary: {
-        main: '#620590',
+        main: '#FDF5E2', // Keeping this as it is unless explicitly changed
     },
     background: {
-      default: '#9c18df', // Background color for the app
+      default: '#FDF5E2', // Updated background color for the app
     },
   },
   typography: {
