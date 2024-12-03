@@ -1,66 +1,127 @@
-import React from 'react';
-import { Card, Box, Typography, Button, CardMedia } from '@mui/material';
-import { useLocation } from 'react-router-dom';
-import {useTheme} from '@mui/material/styles';
+import React, { useEffect, useState } from "react";
+import { Box, Card, CardMedia, Typography, Button } from "@mui/material";
+import { useLocation } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 
 function BookInfo() {
     const theme = useTheme();
-    const location = useLocation(); //allows us to access the passed state data
-    const book = location.state.book; //in this case, we want to access passed-in "book" data
+    const location = useLocation();
+    const book = location.state.book; // Access the passed-in book data
+    const [favorites, setFavorites] = useState([]);
+
+    // Load favorites from localStorage on component mount
+    useEffect(() => {
+        const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        setFavorites(storedFavorites);
+    }, []);
+
+    // Add book to favorites
+    const addToFavorites = () => {
+        // Check if the book is already in the favorites list
+        if (!favorites.some((fav) => fav.id === book.id)) {
+            const updatedFavorites = [...favorites, book];
+            setFavorites(updatedFavorites);
+            localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Persist to localStorage
+            alert(`${book.title} has been added to your favorites!`);
+        } else {
+            alert(`${book.title} is already in your favorites.`);
+        }
+    };
 
     return (
-        <Box //page box
-            sx = {{
-                minHeight: '100vh',
+        <Box
+            sx={{
+                minHeight: "100vh",
                 backgroundColor: theme.palette.primary.main,
-                display: 'flex',
-                alignItems: 'center'
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: 4,
             }}
-        >   
-            <Box //Box container that holds image and book info
-                sx = {{display: 'flex', flexDirection: 'row', gap: 10}}
-            >   
-
-                {/*Box container that holds image and add button*/}
-                <Box
-                    sx = {{display: 'flex', flexDirection: 'column', gap: 2}}
-                >
-                    {/* Image card */}
-                    <Card 
-                        sx = {{width: 300, marginLeft: 10}}
+        >
+            {/* Page Container */}
+            <Box
+                sx={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: 10,
+                }}
+            >
+                {/* Image and Add Button */}
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <Card
+                        sx={{
+                            width: 300,
+                            marginLeft: 10,
+                        }}
                     >
                         <CardMedia
                             component="img"
                             image={book.thumbnail}
-                            sx = {{
+                            sx={{
                                 height: 400,
-                                width: '100%',
-                                objectFit: 'cover'
+                                width: "100%",
+                                objectFit: "cover",
                             }}
                         />
                     </Card>
-                    <Button variant = "contained" sx = {{marginLeft: 10, backgroundColor: theme.palette.secondary.main}}>Add to Favorites</Button>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            marginLeft: 10,
+                            backgroundColor: theme.palette.secondary.main,
+                        }}
+                        onClick={addToFavorites} // Add to Favorites
+                    >
+                        Add to Favorites
+                    </Button>
                 </Box>
-    
 
-                {/* Box container that holds book info */}        
+                {/* Book Info */}
                 <Box
-                    sx = {{display: 'flex', flexDirection: 'column', gap: 1, maxWidth: '60%'}}
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 2,
+                        maxWidth: "60%",
+                    }}
                 >
-                    <Typography variant = "h6" sx = {{color: theme.palette.text.primary}}>{book.title}</Typography>
-                    <Typography variant = "h7" sx = {{color: theme.palette.text.primary}}>{book.authors}</Typography>
-                    <Typography sx = {{color: theme.palette.text.primary}}>{book.publisher}</Typography>
-                    <Typography sx = {{color: theme.palette.text.primary}}>{book.publishedDate}</Typography>
-                    <Typography sx = {{color: theme.palette.text.primary, fontSize: 15}}>{book.description}</Typography>  
+                    <Typography
+                        variant="h6"
+                        sx={{ color: theme.palette.text.primary }}
+                    >
+                        {book.title}
+                    </Typography>
+                    <Typography
+                        variant="h7"
+                        sx={{ color: theme.palette.text.primary }}
+                    >
+                        {book.authors?.join(", ")}
+                    </Typography>
+                    <Typography
+                        sx={{ color: theme.palette.text.primary }}
+                    >
+                        {book.publisher}
+                    </Typography>
+                    <Typography
+                        sx={{ color: theme.palette.text.primary }}
+                    >
+                        {book.publishedDate}
+                    </Typography>
+                    <Typography
+                        sx={{
+                            color: theme.palette.text.primary,
+                            fontSize: 15,
+                        }}
+                    >
+                        {book.description}
+                    </Typography>
                 </Box>
-
-
             </Box>
-
         </Box>
     );
-
-
 }
 
 export default BookInfo;
+
